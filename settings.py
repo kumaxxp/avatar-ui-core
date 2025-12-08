@@ -1,5 +1,8 @@
 """
 設定管理モジュール - .envファイルから全設定を読み込み
+
+外部APIモード:
+  CHAT_API_URL が設定されている場合、GEMINI_API_KEY/MODEL_NAME は不要です。
 """
 import os
 from dotenv import load_dotenv
@@ -8,12 +11,21 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ===========================================
-# 必須設定（環境変数が設定されていない場合はエラー）
+# 外部APIモード判定
 # ===========================================
+EXTERNAL_API_MODE = bool(os.getenv('CHAT_API_URL'))
 
-# AI設定
-GEMINI_API_KEY = os.environ['GEMINI_API_KEY']  # Gemini APIキー
-MODEL_NAME = os.environ['MODEL_NAME']  # 使用するGeminiモデル
+# ===========================================
+# AI設定（外部APIモードでは任意）
+# ===========================================
+if EXTERNAL_API_MODE:
+    # 外部APIモード: Gemini設定は不要
+    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
+    MODEL_NAME = os.getenv('MODEL_NAME', '')
+else:
+    # 従来モード: Gemini設定は必須
+    GEMINI_API_KEY = os.environ['GEMINI_API_KEY']
+    MODEL_NAME = os.environ['MODEL_NAME']
 
 # ===========================================
 # 任意設定（デフォルト値あり）
