@@ -6,65 +6,67 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     background: #000;
     color: #0f0;
     font-family: 'Fira Code', monospace;
     font-size: 14px;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
 }
 
 .terminal {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    padding: 8px;
 }
 
 
 .chat-area {
     width: 100%;
-    max-width: 1160px;
-    height: 300px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     border-top: 2px solid #0f0;
-    padding-top: 15px;
+    padding-top: 8px;
+    min-height: 0;
 }
 
 .chat-container {
     width: 100%;
     flex: 1;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     display: flex;
     gap: 10px;
     min-height: 0;
+    overflow: hidden;
 }
 
 .avatar-area {
-    width: 160px;
+    width: 140px;
+    min-width: 140px;
     border: 1px solid #0f0;
     background: rgba(0, 20, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 15px;
+    padding: 8px;
 }
 
 #avatar-img {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     image-rendering: pixelated;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .avatar-label {
     color: #0f0;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
 }
 
@@ -73,16 +75,15 @@ body {
 .output {
     flex: 1;
     overflow-y: auto;
-    padding: 15px;
+    padding: 10px;
     border: 1px solid #0f0;
     background: rgba(0, 20, 0, 0.1);
-    height: 100%;
-    max-height: 100%;
+    min-height: 0;
 }
 
 
 .line {
-    margin: 8px 0;
+    margin: 6px 0;
     padding: 4px;
     word-wrap: break-word;
 }
@@ -131,9 +132,10 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 8px 10px;
     border: 1px solid #0f0;
     background: rgba(0, 20, 0, 0.1);
+    flex-shrink: 0;
 }
 
 .prompt {
@@ -150,5 +152,3 @@ body {
     font-size: inherit;
     outline: none;
 }
-
-
