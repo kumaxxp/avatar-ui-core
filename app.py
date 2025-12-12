@@ -62,7 +62,7 @@ def api_chat():
             resp = requests.post(
                 EXTERNAL_CHAT_API,
                 json={'message': message},
-                timeout=60  # LLM応答を待つため長めに設定
+                timeout=180  # LLM/VLM応答を待つため3分に延長
             )
             resp.raise_for_status()
             return jsonify(resp.json())
